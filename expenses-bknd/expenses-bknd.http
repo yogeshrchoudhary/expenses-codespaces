@@ -1,0 +1,6 @@
+@expenses_bknd_HostAddress = http://localhost:5187
+
+GET {{expenses_bknd_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
