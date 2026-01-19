@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IExpense } from '../models/expense';
+import { IExpenseGroup } from '../models/expense-group';
 
 @Injectable({
   providedIn: 'root',
@@ -53,18 +54,18 @@ export class ExpensesService {
       }
     ];
 
-  getExpenses(): IExpense[] {
-    return this.expenses;
-  }
-
-  getExpensesGroupedByDate(): { [date: string]: IExpense[] } {
+  getExpensesGroupedByDateWithTotals(): 
+  { [date: string]: IExpenseGroup } {
     return this.expenses.reduce((grouped, expense) => {
       const dateKey = expense.date.toISOString().split('T')[0];
       if (!grouped[dateKey]) {
-        grouped[dateKey] = [];
+        grouped[dateKey] = { date: expense.date, total: 0, expenses: [] };
       }
-      grouped[dateKey].push(expense);
+      grouped[dateKey].expenses.push(expense);
+      grouped[dateKey].total += expense.amount;
+      grouped[dateKey].date = expense.date;
+
       return grouped;
-    }, {} as { [date: string]: IExpense[] });
+    }, {} as { [date: string]: IExpenseGroup});
   }
 }

@@ -29,7 +29,13 @@
 .expense-item-sub:last-child {
     border-bottom: none;
 }
-
+.expense-card-footer {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin-top: 10px;
+    padding-top: 5px;
+    text-align: right;
+}
 
 .expense-amount {
     font-weight: bold;
