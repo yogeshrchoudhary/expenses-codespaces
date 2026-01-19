@@ -1,0 +1,14 @@
+@for(group of expensesByDate | keyvalue; track group.key) {
+    <div class="expense-card">
+        <div class="expense-card-header">&#64; {{ group.key }}</div>
+        @for(expense of group.value ; track expense.id) {
+            <div class="expense-item-main">
+                <span>{{ expense.title }}</span>
+                <span class="expense-amount ">{{ expense.amount | currency: 'GBP' }}</span>
+            </div>
+            <div class="expense-item-sub">
+                {{ expense.category }}
+            </div>
+        }
+    </div>
+}

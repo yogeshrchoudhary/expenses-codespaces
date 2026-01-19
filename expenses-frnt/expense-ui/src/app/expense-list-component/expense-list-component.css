@@ -1,0 +1,38 @@
+.expense-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 15px 0;
+    background-color: #f9f9f9;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.expense-card-header {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    background-color: brown;
+    color: white;
+}
+
+.expense-item-main {
+    margin: 5px 0;
+    flex-direction: row
+}
+
+.expense-item-sub {
+    font-size: 0.9em;
+    color: #666;
+    border-bottom: 1px solid #ccc;
+}
+
+.expense-item-sub:last-child {
+    border-bottom: none;
+}
+
+
+.expense-amount {
+    font-weight: bold;
+    color: green;
+    float: right;
+}
