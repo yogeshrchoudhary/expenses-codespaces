@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule} from '@angular/common';
+import { CommonModule, KeyValue} from '@angular/common';
 import { ExpensesService } from '../services/expenses-service';
 import { IExpenseGroup } from '../models/expense-group';
 
@@ -17,5 +17,9 @@ export class ExpenseListComponent implements OnInit {
 
   ngOnInit(): void {
     this.groupedExpensesWithTotals = this.expenseService.getExpensesGroupedByDateWithTotals();
+  }
+
+  reverse = (keyA: KeyValue<string, IExpenseGroup>, keyB: KeyValue<string, IExpenseGroup>): number => {
+    return keyA.key < keyB.key ? 1 : -1;
   }
 }

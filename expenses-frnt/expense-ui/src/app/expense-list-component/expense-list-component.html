@@ -1,4 +1,4 @@
-@for(group of groupedExpensesWithTotals | keyvalue; track group.key) {
+@for(group of groupedExpensesWithTotals | keyvalue: reverse; track group.key) {
     <div class="expense-card">
         <div class="expense-card-header">&#64; {{ group.value.date | date: 'ccc, dd MMM yy' }}</div>
         @for(expense of group.value.expenses ; track expense.id) {

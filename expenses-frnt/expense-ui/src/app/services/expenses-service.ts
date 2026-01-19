@@ -49,13 +49,41 @@ export class ExpensesService {
         id: '6',
         title: 'Car Fuel',
         amount: 70.00,
+        date: new Date('2025-06-06'),
+        category: 'Transport'
+      },
+      {
+        id: '7',
+        title: 'Movie Tickets',
+        amount: 30.00,
+        date: new Date('2025-01-06'),
+        category: 'Entertainment'
+      },
+      {
+        id: '8',
+        title: 'Book Purchase',
+        amount: 25.00,
         date: new Date('2024-06-06'),
+        category: 'Education',
+        notes: 'Bought a new novel'
+      },
+      {
+        id: '9',
+        title: 'Coffee',
+        amount: 5.00,
+        date: new Date('2024-06-21'),
+        category: 'Food'  
+      },
+      {
+        id: '10',
+        title: 'Public Transport',
+        amount: 15.00,
+        date: new Date('2024-05-06'),
         category: 'Transport'
       }
     ];
 
-  getExpensesGroupedByDateWithTotals(): 
-  { [date: string]: IExpenseGroup } {
+  getExpensesGroupedByDateWithTotals(): { [date: string]: IExpenseGroup } {
     return this.expenses.reduce((grouped, expense) => {
       const dateKey = expense.date.toISOString().split('T')[0];
       if (!grouped[dateKey]) {
