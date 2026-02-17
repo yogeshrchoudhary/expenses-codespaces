@@ -1,6 +1,12 @@
+using expenses_api.Endpoints;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Configuration
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+    .AddEnvironmentVariables();
 
 builder.Services.AddCors(options =>
 {
@@ -8,9 +14,12 @@ builder.Services.AddCors(options =>
     // this HTTP API needs to be served on a public port when running in Codespaces.
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("https://psychic-fortnight-rr5ppq554pwhx7jx-4200.app.github.dev") 
-              .AllowAnyMethod()
-              .AllowAnyHeader();        
+        builder.Configuration.GetSection("AllowedOrigins").Get<string[]>()?.ToList().ForEach(origin =>
+        {
+            policy.WithOrigins(origin)
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
     });
 });
 
@@ -41,35 +50,8 @@ app.UseSwaggerUI(options => options.SwaggerEndpoint("v1/swagger.json", "My Expen
 
 app.UseCors("AllowFrontend");
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
-
-app.MapGet("/expenses", () =>
-{
-    return new[] { "Expense1", "Expense2", "Expense3" };
-})
-.WithName("GetExpenses");
-
+new ExpenesEndpoints().Map(app);
+new WeatherForecastEndpoints().Map(app);
 
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
