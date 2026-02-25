@@ -1,0 +1,7 @@
+total 12
+-rw-r--r-- 1 UK+ychoudhary23 4096 1134 Feb 25 16:53 codespaces-blank.sln
+drwxr-xr-x 1 UK+ychoudhary23 4096    0 Feb 25 16:53 docs/
+drwxr-xr-x 1 UK+ychoudhary23 4096    0 Feb 25 20:14 expenses-api/
+drwxr-xr-x 1 UK+ychoudhary23 4096    0 Feb 25 16:53 expenses-bknd/
+drwxr-xr-x 1 UK+ychoudhary23 4096    0 Feb 25 16:53 expenses-frnt/
+-rw-r--r-- 1 UK+ychoudhary23 4096    0 Feb 25 20:55 newfile.txt
