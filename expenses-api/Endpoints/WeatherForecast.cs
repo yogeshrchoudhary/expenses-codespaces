@@ -9,8 +9,10 @@ public class WeatherForecastEndpoints
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        app.MapGet("/weatherforecast", () =>
+        app.MapGet("/weatherforecast", (ILogger<WeatherForecastEndpoints> logger) =>
         {
+            logger.LogInformation("Getting weather forecast");
+
             var forecast =  Enumerable.Range(1, 5).Select(index =>
                 new WeatherForecast
                 (

@@ -2,13 +2,14 @@ using System.Linq.Expressions;
 
 namespace expenses_api.Endpoints;
 
-public class ExpenesEndpoints
+public class ExpenesEndpoints()
 {
     public void Map(WebApplication app)
     {
-        app.MapGet("/expenses", () =>
+        app.MapGet("/expenses", (ILogger<ExpenesEndpoints> logger) =>
         {
-            // return new[] { "Expense1", "Expense2", "Expense3" };
+            logger.LogInformation("Fetching all expenses");
+
             return new[]
             {
                 new Expense(1, "Groceries", 150.75m, DateTime.Now.AddDays(-2), "Food", "Bought groceries for the week"),
