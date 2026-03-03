@@ -1,8 +1,8 @@
 namespace expenses_api.Endpoints;
 
-public class WeatherForecastEndpoints
+public class WeatherForecastEndpoints: BaseEndpointDefinition
 {
-    public void Map(WebApplication app)
+    public override void Map(IEndpointRouteBuilder app)
     {
         var summaries = new[]
         {

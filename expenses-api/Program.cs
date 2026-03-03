@@ -1,8 +1,6 @@
-using expenses_api.Endpoints;
+using expenses_api;
 using Microsoft.OpenApi;
 using Serilog;
-
-Log.Logger = SwitchableLogger.Instance;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +34,8 @@ builder.Services.AddSwaggerGen(options =>
     options.SwaggerDoc("v1", new OpenApiInfo { Title = "Expenses api", Version = "v1" });
 });
 
-builder.Services.AddSerilog(configureLogger => 
+// Configure Serilog for logging
+builder.Services.AddSerilog(configureLogger =>
         configureLogger.ReadFrom.Configuration(builder.Configuration));
 
 var app = builder.Build();
@@ -57,10 +56,6 @@ app.UseSwaggerUI(options => options.SwaggerEndpoint("v1/swagger.json", "My Expen
 app.UseCors("AllowFrontend");
 
 // Endpoint configuration
-//builder.Services.AddScoped<ExpenesEndpoints>();
-//builder.Services.AddScoped<WeatherForecastEndpoints>();
-new ExpenesEndpoints().Map(app);
-new WeatherForecastEndpoints().Map(app);
+app.MapEndpoints();
 
 app.Run();
-

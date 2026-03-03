@@ -1,10 +1,8 @@
-using System.Linq.Expressions;
-
 namespace expenses_api.Endpoints;
 
-public class ExpenesEndpoints()
+public class ExpenesEndpoints() : BaseEndpointDefinition
 {
-    public void Map(WebApplication app)
+    public override void Map(IEndpointRouteBuilder app)
     {
         app.MapGet("/expenses", (ILogger<ExpenesEndpoints> logger) =>
         {
