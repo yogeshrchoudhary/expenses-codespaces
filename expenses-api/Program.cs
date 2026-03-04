@@ -1,12 +1,21 @@
+using ConfigurationSubstitution;
 using expenses_api;
 using Microsoft.OpenApi;
 using Serilog;
+using System.Diagnostics;
+
+#if DEBUG
+Serilog.Debugging.SelfLog.Enable(msg => Debug.WriteLine(msg));
+Serilog.Debugging.SelfLog.Enable(Console.Error);
+#endif
 
 var builder = WebApplication.CreateBuilder(args);
 
+string environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 builder.Configuration
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false)
+    .AddJsonFile($"appsettings.{environmentName}.json", optional: false, reloadOnChange: false)
     .AddEnvironmentVariables();
 
 builder.Services.AddCors(options =>
@@ -35,8 +44,11 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // Configure Serilog for logging
+var cm = builder.Configuration;
+cm.EnableSubstitutions("$(", ")");
 builder.Services.AddSerilog(configureLogger =>
-        configureLogger.ReadFrom.Configuration(builder.Configuration));
+        configureLogger.ReadFrom
+        .Configuration(cm));
 
 var app = builder.Build();
 
