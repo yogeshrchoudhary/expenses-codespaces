@@ -44,11 +44,10 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 // Configure Serilog for logging
-var cm = builder.Configuration;
-cm.EnableSubstitutions("$(", ")");
+builder.Configuration.EnableSubstitutions("$(", ")");
 builder.Services.AddSerilog(configureLogger =>
         configureLogger.ReadFrom
-        .Configuration(cm));
+        .Configuration(builder.Configuration));
 
 var app = builder.Build();
 
