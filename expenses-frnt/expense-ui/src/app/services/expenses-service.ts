@@ -8,7 +8,7 @@ import { IExpenseGroup } from '../models/expense-group';
 export class ExpensesService {
   private expenses = <IExpense[]> [
       {
-        id: '1',
+        id: 1,
         title: 'Groceries',
         amount: 150.75,
         date: new Date('2024-06-01'),
@@ -16,14 +16,14 @@ export class ExpensesService {
         notes: 'Weekly grocery shopping'
       },
       {
-        id: '2',
+        id: 2,
         title: 'Electricity Bill',
         amount: 60.00,
         date: new Date('2024-06-01'),
         category: 'Utilities'
       },
       {
-        id: '3',
+        id: 3,
         title: 'Gym Membership',
         amount: 45.00,
         date: new Date('2024-06-03'),
@@ -31,14 +31,14 @@ export class ExpensesService {
         notes: 'Monthly subscription'
       },
       {
-        id: '4',
+        id: 4,
         title: 'Internet Bill',
         amount: 40.00,
         date: new Date('2024-06-03'),
         category: 'Utilities'
       },
       {
-        id: '5',
+        id: 5,
         title: 'Dining Out',
         amount: 80.50,
         date: new Date('2024-06-03'),
@@ -46,21 +46,21 @@ export class ExpensesService {
         notes: 'Dinner with friends'
       },
       {
-        id: '6',
+        id: 6,
         title: 'Car Fuel',
         amount: 70.00,
         date: new Date('2025-06-06'),
         category: 'Transport'
       },
       {
-        id: '7',
+        id: 7,
         title: 'Movie Tickets',
         amount: 30.00,
         date: new Date('2025-01-06'),
         category: 'Entertainment'
       },
       {
-        id: '8',
+        id: 8,
         title: 'Book Purchase',
         amount: 25.00,
         date: new Date('2024-06-06'),
@@ -68,14 +68,14 @@ export class ExpensesService {
         notes: 'Bought a new novel'
       },
       {
-        id: '9',
+        id: 9,
         title: 'Coffee',
         amount: 5.00,
         date: new Date('2024-06-21'),
         category: 'Food'  
       },
       {
-        id: '10',
+        id: 10,
         title: 'Public Transport',
         amount: 15.00,
         date: new Date('2024-05-06'),

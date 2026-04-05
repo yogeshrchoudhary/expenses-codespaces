@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("expenses-bknd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e981792e5fc87835bebffd31e1b86b60fc2e6149")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+510d143e1bfeaffae08efb9cc35dc37b3330a21e")]
 [assembly: System.Reflection.AssemblyProductAttribute("expenses-bknd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("expenses-bknd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
